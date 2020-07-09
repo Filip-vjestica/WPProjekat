@@ -1,0 +1,77 @@
+<div>
+    <table class="table">
+        <caption><strong>Tretmani</strong></caption>
+            <thead>
+                <tr>
+                    <th><strong>ID</strong></th>
+                    <th><strong>Naziv</strong></th>
+                    <th><strong>Vrsta</strong></th>
+                    <th><strong>Regija</strong></th>
+                    <th><strong>Trajanje</strong></th>
+                    <th><strong>Cena</strong></th>
+                    <th><strong>Opis</strong></th>
+                    <th class="text-right">Akcija</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tretman in ac.tretmani | orderBy:'vrsta'">
+                    <td>{{tretman.id}}.</td>
+                    <td>{{tretman.naziv_m}}</td>
+                    <td>{{tretman.vrsta}}</td>
+                    <td>{{tretman.regija}}</td>
+                    <td>{{tretman.trajanje}} min</td>
+                    <td>{{tretman.cena}} din</td>
+                    <td>{{tretman.opis}}</td>
+                    <td class="text-right">
+                        <button class="btn btn-danger btn-sm" ng-click="ac.ukloniTretman(tretman.id)"><i class="fas fa-trash-alt"></i>
+                        Izbrisi</button>
+                        <a ui-sref="tretman({id: tretman.id})" class="btn btn-primary btn-sm"><i class="far fa-eye"></i>
+                        Detalji</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+    </table>
+    <div class="mb-3">
+        <form ng-submit="ac.dodajTretman()">
+            <div class="form-group">
+                <label for="nazivM">Naziv Tretmana</lable>
+                <input class="form-control" type="text" id="nazivM" placeholder="naziv tretmana" ng-model="ac.noviTretman.naziv_m" required>
+            </div>
+            <div class="form-group">
+                <label for="vrstaM">Vrsta Tretmana</lable>
+                <select class="form-control" id="regijaM" ng-model="ac.noviTretman.vrsta"required>
+                    <option value="ciscenje">ciscenje</option>
+                    <option value="nega">nega</option>
+                    <option value="depilacija">depilacija</option>
+                    <option value="ciscenje mitesera">ciscenje mitesera</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="regijaM">Regija</lable>
+                <select class="form-control" id="regijaM" ng-model="ac.noviTretman.regija"required>
+                    <option value="lice">lice</option>
+                    <option value="ruke">ruke</option>
+                    <option value="noge">noge</option>
+                    <option value="ledja">ledja</option>
+                    <option value="prepone">prepone</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="trajanjeM">Trajanje Tretmana</lable>
+                <input class="form-control" type="number" id="trajanjeM" placeholder="trajanje tretmana" step="5" ng-model="ac.noviTretman.trajanje" required>
+            </div>
+            <div class="form-group">
+                <label for="cenaM">Cena Tretmana</lable>
+                <input class="form-control" type="number" id="cenaM" placeholder="cena tretmana" step="100" ng-model="ac.noviTretman.cena" required>
+            </div>
+            <div class="form-group">
+                <label for="opisM">Opis Tretmana</lable>
+                <textarea class="form-control" id="opisM" ng-model="ac.noviTretman.opis"></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Dodaj">
+        </form>
+    </div>
+</div>
+

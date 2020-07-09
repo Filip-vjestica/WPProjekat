@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kozmeticki Salon "Diva"</title>
+    <link rel="icon" href="Kozmeticki-salon.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="Kozmeticki-salon.png" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/fontawesome/css/all.min.css" />
+</head>
+<body ng-app="app" ng-controller="LoginCtrl as lc">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="home">Cenovnik</a></li>
+                <li ng-if="lc.loggedIn" class="nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="administracijaRezervacije">Rezervacije</a></li>
+                <li class="nav-item" ui-sref-active="active">
+                <div ng-if="lc.isAdmin" class="dropdown">
+                    <a class="dropdown-toggle nav-link" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Administracija
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a ui-sref-active="active" class="dropdown-item" ui-sref="administracijaTretmana">Tretmani</a>
+                        <a ui-sref-active="active" class="dropdown-item" ui-sref="administracijaPaketi">Paketi</a>
+                        <a ui-sref-active="active" class="dropdown-item" ui-sref="administracijaRezervacije">Rezervacije</a>
+                        <a ui-sref-active="active" class="dropdown-item" ui-sref="administracijaKorisnici">Korisnici</a>
+                    </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="float-right">
+                
+            <div ng-if="!lc.loggedIn" class="d-flex">
+                <form class="form-inline" ng-submit="lc.login()">
+                        <input class="form-control mr-sm-2" placeholder="Korisnicko ime" type="text" ng-model="lc.user.username">
+                        <input class="form-control mr-sm-2" placeholder="Lozinka" type="password" ng-model="lc.user.lozinka">
+                        <input class="btn btn-primary btn" type="submit" value="Prijava">
+                </form>
+                <button class="btn btn-success ml-2" ui-sref="registracija">Registracija</button>
+            </div>    
+                <button ng-if="lc.loggedIn" class="btn btn-primary btn" ng-click="lc.logout()">Odjava ({{lc.loggedInUser.username}})</button>
+            </div>
+        </nav>
+        <ui-view></ui-view>
+    </div>
+
+    <script src="scripts/jquery-3.3.1.min.js"></script>
+    <script src="scripts/popper.min.js"></script>
+    <script src="scripts/bootstrap.bundle.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-ui-router.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/components/cenovnik/cenovnikCtrl.js"></script>
+    <script src="app/components/registracija/registracijaCtrl.js"></script>
+    <script src="app/components/administracija/administracijaCtrl.js"></script>
+    <script src="app/components/korisnik/korisnikCtrl.js"></script>
+    <script src="app/components/login/loginCtrl.js"></script>
+    <script src="app/components/tretman/tretmanCtrl.js"></script>
+    <script src="app/components/paket/paketCtrl.js"></script>
+    
+
+    
+</body>
+</html>

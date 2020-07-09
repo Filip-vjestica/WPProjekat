@@ -1,0 +1,57 @@
+<div class="mb-3">
+	<h1>Cene</h1>
+	<table class="table">
+		<caption><strong>Tretmani</strong></caption>
+		<thead>
+			<tr>
+				<td><strong>ID tretmana</strong></td>
+				<td><strong>Naziv</strong></td>
+				<td><strong>Vrsta</strong></td>
+				<td><strong>Regija</strong></td>
+				<td><strong>Trajanje</strong></td>
+				<td><strong>Cena</strong></td>
+				<td><strong>Opis</strong></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="tretman in cc.tretmani | orderBy:'vrsta'">
+				<td>{{tretman.id}}</td>
+				<td>{{tretman.naziv_m}}</td>
+				<td>{{tretman.vrsta}}</td>
+				<td>{{tretman.regija}}</td>
+				<td>{{tretman.trajanje}} min</td>
+				<td>{{tretman.cena}} din</td>
+				<td>{{tretman.opis}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			
+		</tfoot>
+	</table>
+	<table class="table">
+		<caption><strong>Paketi</strong></caption>
+		<thead>
+			<tr>
+				<td><strong>ID paketa</strong></td>
+				<td><strong>Naziv</strong></td>
+				<td><strong>Kolicina</strong></td>
+				<td><strong>Cena</strong></td>
+				<td><strong>Opis</strong></td>
+				<td><strong>Tretman</strong></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="paket in cc.paketi">
+				<td>{{paket.id}}</td>
+				<td>{{paket.naziv_p}}</td>
+				<td>{{paket.kolicina}}</td>
+				<td>{{paket.cena}} din</td>
+				<td>{{paket.opis}}</td>
+				<td>{{paket.naziv_m}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			
+		</tfoot>
+	</table>
+</div>

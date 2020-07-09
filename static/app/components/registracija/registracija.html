@@ -1,0 +1,26 @@
+<div class="mb-3">
+    <form ng-submit="rgc.registracijaKorisnika()">
+        <div class="form-group">
+            <label for="username">Korisničko ime</label>
+            <input type="text" class="form-control" id="username" placeholder="Username" ng-model="rgc.registrovaniKorisnik.username"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="ime">Ime</label>
+            <input type="text" class="form-control" id="ime" placeholder="Ime" ng-model="rgc.registrovaniKorisnik.ime"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="prezime">Prezime</label>
+            <input type="text" class="form-control" id="prezime" placeholder="Prezime" ng-model="rgc.registrovaniKorisnik.prezime"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="lozinka">Lozinka</label>
+            <input type="password" class="form-control" id="lozinka" placeholder="Lozinka" ng-model="rgc.registrovaniKorisnik.lozinka"
+                required>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Registruj">
+    </form><br/>
+    <a ui-sref="home" ui-sref-active="active" class="btn btn-primary">Nazad</a>
+</div>

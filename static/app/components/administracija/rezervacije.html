@@ -1,0 +1,47 @@
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th><strong>ID</strong></th>
+                <th><strong>Datum</strong></th>
+                <th><strong>Korisnik</strong></th>
+                <th><strong>Tretman</strong></th>
+                <th class="text-right">Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="rezervacija in ac.rezervacije">
+                <td>{{rezervacija.id}}.</td>
+                <td>{{rezervacija.datum}}</td>
+                <td>{{rezervacija.username}}</td>
+                <td>{{rezervacija.naziv_m}}</td>
+                <td class="text-right">
+                    <button class="btn btn-danger btn-sm text-white" ng-if="lc.isAdmin" ng-click="ac.ukloniRezervaciju(rezervacija.id)"> <i class="fas fa-trash-alt"></i> Ukloni</button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+</div>
+<div class="mb-3">
+        <form ng-submit="ac.dodajRezervaciju()">
+            <div class="form-group">
+                <label for="datum">Datum</label>
+                <input class="form-control" type="text" id="datum" ng-model="ac.novaRezervacija.datum" required>
+            </div>
+            <div class="form-group">
+                    <label for="korisnik">Korisnik</label>
+                    <select class="form-control" id="korisnik" ng-options="korisnik.id as korisnik.username for korisnik in ac.korisnici"
+                        ng-model="ac.novaRezervacija.korisnici_id" required></select>
+            </div>
+            <div class="form-group">
+                <label for="tretman">Tretmani</label>
+                <select class="form-control" id="tretman" ng-options="tretman.id as tretman.naziv_m for tretman in ac.tretmani track by tretman.id"
+                    ng-model="ac.novaRezervacija.tretmani_id" required></select>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Dodaj">
+        </form>
+    </div>
+
+    

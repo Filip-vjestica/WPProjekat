@@ -1,0 +1,71 @@
+<div>
+    <div class="mb-3">
+        <form ng-submit="ac.dodajKorisnika()">
+
+            <div class="form-group">
+                <label for="username">Korisnicko ime</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" ng-model="ac.noviKorisnik.username"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="ime">Ime</label>
+                <input type="text" class="form-control" id="ime" placeholder="Ime" ng-model="ac.noviKorisnik.ime"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="prezime">Prezime</label>
+                <input type="text" class="form-control" id="prezime" placeholder="Prezime" ng-model="ac.noviKorisnik.prezime"
+                    required>
+            </div>
+
+             <div class="form-group">
+                <label for="lozinka">Lozinka</label>
+                <input type="password" class="form-control" id="lozinka" placeholder="Lozinka" ng-model="ac.noviKorisnik.lozinka"
+                    required>
+            </div>
+
+             <div class="form-group">
+                <label for="uloga">Uloga</label>
+                <select class="form-control" id="uloga" required ng-model="ac.noviKorisnik.uloga">
+                    <option value="gost" selected>gost</option>
+                    <option value="zaposleni">zaposleni</option>
+                </select>
+            </div>
+
+            <input type="submit" class="btn btn-primary" value="Dodaj">
+
+        </form>
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><strong>ID korisnika</strong></th>
+                    <th><strong>Username</strong></th>
+                    <th><strong>Ime</strong></th>
+                    <th><strong>Prezime</strong></th>
+                    <th><strong>Uloga</strong></th>
+                    <th><strong>Paketi</strong></th>
+                    <th class="text-right">Akcija</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="korisnik in ac.korisnici">
+                    <td>{{korisnik.id}}.</td>
+                    <td>{{korisnik.username}}</td>
+                    <td>{{korisnik.ime}}</td>
+                    <td>{{korisnik.prezime}}</td>
+                    <td>{{korisnik.uloga}}</td>
+                    <td>{{korisnik.naziv_p}}</td>
+                    <td class="text-right">
+                        <button class="btn btn-danger btn-sm" ng-click="ac.ukloniKorisnika(korisnik.username)"><i class="fas fa-trash-alt"></i>
+                            Izbrisi</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+</div>

@@ -1,0 +1,60 @@
+<table class="table">
+    <caption><strong>Paketi</strong></caption>
+    <thead>
+        <tr>
+            <th><strong>ID</strong></th>
+            <th><strong>Naziv</strong></th>
+            <th><strong>Kolicina</strong></th>
+            <th><strong>Cena</strong></th> 
+            <th><strong>Tretman</strong></th>
+            <th><strong>Opis</strong></th>
+            <th class="text-right">Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="paket in ac.paketi">
+            <td>{{$index+1}}.</td>
+            <td>{{paket.naziv_p}}</td>
+            <td>{{paket.kolicina}}</td>
+            <td>{{paket.cena}} din</td>
+            <td>{{paket.naziv_m}}</td>
+            <td>{{paket.opis}}</td>
+            <td class="text-right">
+            <button class="btn btn-danger btn-sm" ng-click="ac.ukloniPaket(paket.id)"><i class="fas fa-trash-alt"></i>
+                Ukloni</button>
+            <a ui-sref="paket({id: paket.id})" class="btn btn-primary btn-sm"><i class="far fa-eye"></i>
+                Detalji</a>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>
+</div>
+<div class="mb-3">
+<form ng-submit="ac.dodajPaket()">
+    <div class="form-group">
+        <label for="nazivP">Naziv Paketa</label>
+        <input class="form-control" type="text" id="nazivM" placeholder="naziv tretmana" ng-model="ac.noviPaket.naziv_p" required>
+    </div>
+    <div class="form-group">
+        <label for="kolicina">Kolicina</lable>
+        <input class="form-control" type="number" id="kolicina" placeholder="kolicina"  ng-model="ac.noviPaket.kolicina" required>
+    </div>
+    <div class="form-group">
+        <label for="cenaP">Cena</lable>
+        <input class="form-control" type="number" id="cenaM" placeholder="cena tretmana" step="100" ng-model="ac.noviPaket.cena" required>
+    </div>
+    <div class="form-group">
+        <label for="tretmanP">Tretmani</label>
+        <select class="form-control" id="tretmanP" ng-options="tretman.id as tretman.naziv_m for tretman in ac.tretmani track by tretman.id"
+            ng-model="ac.noviPaket.tretmani_id" required></select>
+    </div>
+    <div class="form-group">
+        <label for="opisP">Opis Paketa</lable>
+        <textarea class="form-control" id="opisP" ng-model="ac.noviPaket.opis"></textarea>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Dodaj">
+</form>
+</div>
+</div>

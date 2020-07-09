@@ -1,0 +1,43 @@
+<div>
+    <div class="mb-3">
+        <form ng-submit="rc.dodajRezervacije()">
+            <div class="form-group">
+                <label for="datum">Datum</label>
+                <input type="text" class="form-control" id="datum" required>
+            </div>
+            <div class="form-group">
+                    <label for="korisnik">Korisnik</label>
+                    <select class="form-control" id="korisnik" ng-options="korisnik.username as korisnik.ime + ' ' + korisnik.prezime for korisnik in rc.korisnici track by korisnik.username"
+                        ng-model="rc.novaRezervacija.korisnik_id" required><option></option></select>
+                </div>
+            <div class="form-group">
+                <label for="tretman">Tretmani</label>
+                <select class="form-control" id="tretman" ng-options="tretman.id as tretman.naziv_m for tretman in rc.tretmani track by tretman.id"
+                    ng-model="rc.novaRezervacija.tretman" required><option></option></select>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Dodaj">
+        </form>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>R. br.</th>
+                <th>Korisnik</th>
+                <th>tretman id</th>
+                <th>Datum</th>
+                <th>Količina</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="rezervacija in rc.rezervacije">
+                <td>{{rezervacija.id}}.</td>
+                <td>{{rezervacija.korisnici_username}}</td>
+                <td>{{rezervacija.tretmani_naziv}}</td>
+                <td>{{rezervacija.datum}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+</div>
